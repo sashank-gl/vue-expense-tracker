@@ -63,13 +63,15 @@ const saveToLocal = () => {
 </script>
 
 <template>
-    <div class="bg-[#e8e4e6] flex flex-col justify-center items-center h-screen">
-        <div class="w-[32rem] bg-[#004643] text-[#fffffe] rounded-lg shadow-lg flex flex-col justify-center p-5 gap-4">
+    <div class="bg-[#e8e4e6] flex flex-col justify-center items-center h-screen sm:min-h-screen">
+        <div class="sm:h-[36rem] sm:w-[60rem] bg-[#004643] text-[#fffffe] rounded-lg shadow-lg flex flex-col justify-evenly p-5 gap-4">
             <Header />
             <Balance :totalBalance="totalBalance" />
             <IncomeExpenses :totalIncome="totalIncome" :totalExpense="totalExpense" />
-            <AddTransaction @transactionAdded="handleTransactionAdded" />
-            <TransactionList :transactions="transactions" @itemDeleted="handleItemDeleted" />
+            <div class="flex-col sm:flex sm:flex-row gap-4 justify-around">
+                <TransactionList :transactions="transactions" @itemDeleted="handleItemDeleted" />
+                <AddTransaction @transactionAdded="handleTransactionAdded" />
+            </div>
         </div>
     </div>
 </template>

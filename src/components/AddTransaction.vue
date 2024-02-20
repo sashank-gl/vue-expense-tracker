@@ -25,30 +25,32 @@ const onSubmit = () => {
     }
 
     emit('transactionAdded', transactionData)
-    
+
     console.log(transactionData)
     item.value = ''
     amount.value = ''
-    category.value = 'income';
+    category.value = '';
 }
 </script>
 
 <template>
-    <h2 class="text-xl">Add Transaction</h2>
-    <form id="form" @submit.prevent="onSubmit">
-        <div class="text-xl flex flex-col gap-2 text-[#001e1d]">
-            <input class="p-2 rounded-lg" v-model="item" type="text" id="item" placeholder="Enter Item" />
-            <input class="p-2 rounded-lg" v-model="amount" type="number" id="amount" placeholder="Enter Amount" />
-            <div class="flex items-center gap-2">
-                <label for="category">Category</label>
-                <select class="p-2 rounded-lg" v-model="category">
-                    <option value="">Select</option>
-                    <option value="income">Income</option>
-                    <option value="expense">Expense</option>
-                </select>
-            </div>
+    <div>
+        <h2 class="text-xl mb-6">Add Transaction</h2>
+        <form id="form" @submit.prevent="onSubmit">
+            <div class="text-xl flex flex-col gap-2 text-[#001e1d]">
+                <input class="p-2 rounded-lg focus:outline-none focus:ring focus:ring-[#f9bc60]" v-model="item" type="text" id="item" placeholder="Enter Item" />
+                <input class="p-2 rounded-lg focus:outline-none focus:ring focus:ring-[#f9bc60]" v-model="amount" type="number" id="amount" placeholder="Enter Amount" />
+                <div class="flex items-center justify-between sm:justify-center gap-12">
+                    <label for="category" class="text-[#fffffe]">Category</label>
+                    <select class="p-2 rounded-lg min-w-48 focus:outline-none focus:ring focus:ring-[#f9bc60]" v-model="category">
+                        <option value="">Select</option>
+                        <option value="income">Income</option>
+                        <option value="expense">Expense</option>
+                    </select>
+                </div>
 
-            <button class="bg-[#f9bc60] font-semibold py-2 px-4 rounded-lg">Add</button>
-        </div>
-    </form>
+                <button class="bg-[#f9bc60] font-semibold py-2 px-4 rounded-lg">Add</button>
+            </div>
+        </form>
+    </div>
 </template>
